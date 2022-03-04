@@ -7,6 +7,18 @@
   <tr>
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
+	  <br>
+	  <th>
+	    <%= link_to relationships_followings_path do %>
+	      follows: <%= user.followings.count %>
+	    <% end %>
+	  </th>
+	  <br>
+	  <th>
+	    <%= link_to relationships_followers_path do %>
+	      follows: <%= user.followers.count %>
+	    <% end %>
+	  </th>
   </tr>
 </table>
 
