@@ -47,24 +47,26 @@
 
       </table>
       <table>
-        <% @book.bookcomments.each do |bookcomment| %>
-          <tr>
-            <td>
-              <%= link_to(bookcomment.user) do %>
-                <%= image_tag bookcomment.user.get_profile_image, size:"100x100" %><br>
-                <%= bookcomment.user.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= bookcomment.comment %>
-            </td>
-            <td>
-              <% if bookcomment.user == current_user %>
-                <%= link_to "Destroy" , book_path(@book,bookcomment), method: :delete, "data-confirm" => "are you sure", class: "btn btn-sm btn-danger destroy_book_47834" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+        <tbody>
+        　<% @book.bookcomments.each do |bookcomment| %>
+        　  <tr>
+        　    <td>
+        　      <%= link_to user_path(bookcomment.user) do %>
+        　        <%= image_tag bookcomment.user.get_profile_image, size:"100x100" %><br>
+        　        <%= bookcomment.user.name %>
+        　      <% end %>
+        　    </td>
+        　    <td>
+        　      <%= bookcomment.comment %>
+        　    </td>
+        　    <td>
+        　      <% if bookcomment.user == current_user %>
+        　        <%= link_to "Destroy" , book_path(@book,bookcomment), method: :delete, "data-confirm" => "are you sure", class: "btn btn-sm btn-danger destroy_book_47834" %>
+        　      <% end %>
+        　    </td>
+        　  </tr>
+        　<% end %>
+        </tbody>
       </table>
       <div>
         <%= form_with model: [@book, @bookcomment] do |f| %>
